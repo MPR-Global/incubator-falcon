@@ -38,6 +38,16 @@
                         Light
                     </button>
                 </li>
+                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='dark'">
+                    <button type="button" class="btn btn-link" data-ng-click="themeChange('gray')">
+                        Light Gray
+                    </button>
+                </li>
+                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='gray'">
+                    <button type="button" class="btn btn-link" data-ng-click="themeChange('dark')">
+                       Dark
+                    </button>
+                </li>
                 <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='white'">
                     <button type="button" class="btn btn-link" data-ng-click="themeChange('dark')">
                         Dark

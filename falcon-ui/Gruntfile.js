@@ -154,7 +154,8 @@
           },
           files: {
             'dist/css/dark-theme.css': 'app/css/main.less',
-            'dist/css/white-theme.css': 'app/css/white-theme.less'
+            'dist/css/white-theme.css': 'app/css/white-theme.less',
+            'dist/css/gray-theme.css': 'app/css/gray-theme.less'
           }
         }
       },
