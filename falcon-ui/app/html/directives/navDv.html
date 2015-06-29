@@ -33,36 +33,22 @@
                 <span class="glyphicon glyphicon-cog" title="Settings"></span>
             </a>
             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="settingMenu">
-                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='dark'">
+                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='dark' || theme=='gray'">
                     <button type="button" class="btn btn-link" data-ng-click="themeChange('white')">
                         Light Green
                     </button>
                 </li>
-                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='dark'">
+                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='dark'|| theme=='white'">
                     <button type="button" class="btn btn-link" data-ng-click="themeChange('gray')">
                         Light Gray
                     </button>
                 </li>
-                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='gray'">
+                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='gray'|| theme=='white'">
                     <button type="button" class="btn btn-link" data-ng-click="themeChange('dark')">
                        Dark
                     </button>
                 </li>
-                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='gray'">
-                    <button type="button" class="btn btn-link" data-ng-click="themeChange('white')">
-                        Light Green
-                    </button>
-                </li>
-                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='white'">
-                    <button type="button" class="btn btn-link" data-ng-click="themeChange('dark')">
-                        Dark
-                    </button>
-                </li>
-                <li role="presentation" role="menuitem" tabindex="-1" data-ng-if="theme=='white'">
-                    <button type="button" class="btn btn-link" data-ng-click="themeChange('gray')">
-                        Light Gray
-                    </button>
-                </li>
+              
             </ul>
         </div>
         <span class="separator"> | </span>
