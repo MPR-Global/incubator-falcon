@@ -339,7 +339,7 @@
           $scope.transformBack();
         }
       }
-      var refresher = $interval(xmlPreviewCallback, 1000);
+      var refresher = $interval(xmlPreviewCallback, 5000);
 
       $scope.skipUndo = false;
       $scope.$on('$destroy', function () {
