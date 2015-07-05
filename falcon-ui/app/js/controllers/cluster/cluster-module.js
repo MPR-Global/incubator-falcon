@@ -188,6 +188,11 @@
           $scope.convertTags();
         }
       };
+       $scope.toggleclick = function () {
+        $('.formBoxContainer').toggleClass('col-xs-14 col-xs-24');
+        $('.xmlPreviewContainer ').toggleClass('col-xs-10 hide');
+                                                   
+      };
       //-------------------------------------//
       //----------LOCATION-------------------//
 
