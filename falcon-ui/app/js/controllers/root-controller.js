@@ -26,7 +26,7 @@
     function ($scope, $timeout, Falcon, FileApi,
               EntityModel, $state, X2jsService, validationService, SpinnersFlag, EntityFalcon) {
 
-      var resultsPerPage = 3;
+      var resultsPerPage = 10;
 
       $scope.server = Falcon;
       $scope.validations = validationService;

@@ -24,7 +24,7 @@
     function ($http, X2jsService, $location, $rootScope, $cookieStore, $timeout) {
 
     var Falcon = {},
-        NUMBER_OF_ENTITIES = 10,
+        NUMBER_OF_ENTITIES = 20,
         NUMBER_OF_INSTANCES = 11; // 10 + 1 for next page
 
     function buildURI(uri){
