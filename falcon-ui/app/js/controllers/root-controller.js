@@ -140,6 +140,11 @@
         $scope.refreshList($scope.tags);
       };
 
+      $scope.clearTags = function(){
+        $scope.tags = [];
+        $scope.$parent.refreshList($scope.tags);
+      };
+
 
     }]);
 
