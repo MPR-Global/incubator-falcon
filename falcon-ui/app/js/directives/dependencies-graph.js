@@ -48,7 +48,7 @@
             return type + '/' + name;
           }
 
-          function getOrCreateNode(type, name) {
+          function getOrCreateNode(type, name, tag) {
             var k = key(type, name);
             if (nodes[k] !== undefined)
               return nodes[k];
@@ -57,6 +57,7 @@
               "guid": next_node_id++,
               "type": type,
               "name": name,
+              "arrowDirections": tag,
               "children": []
             };
             nodes[k] = n;
@@ -80,8 +81,8 @@
                   var l = data.entity.length;
                   for (var i = 0; i < l; ++i) {
                     var e = data.entity[i];
-
-                    var d = getOrCreateNode(e.type, e.name);
+                    var tag = e.hasOwnProperty('tag') ? e.tag[0] : "Input";
+                    var d = getOrCreateNode(e.type, e.name, tag);
                     var src = null, dst = null;
                     if (d.type === "cluster") {
                       src = node; dst = d;
@@ -94,7 +95,6 @@
                         src = node; dst = d;
                       }
                     }
-                   // console.log(src.name + '->' + dst.name);
                     src.children.push(d);
                   }
 
@@ -106,7 +106,7 @@
           }
 
           function load() {
-            var n = getOrCreateNode(entity_type, entity_name);
+            var n = getOrCreateNode(entity_type, entity_name, "Input");
             loadEntry(n);
           }
           load();
@@ -143,12 +143,17 @@
                 .select('g')
                 .attr('transform',
                 'translate(' + margin.left + ',' + margin.right + ')');
+
+            svg.append("svg:defs").append("svg:marker").attr("id", "output-arrow").attr("viewBox", "0 0 10 10")
+            .attr("refX", 20).attr("refY", 5).attr("markerUnits", "strokeWidth").attr("markerWidth", 6)
+             .attr("markerHeight", 9).attr("orient", "auto").append("svg:path").attr("d", "M 0 0 L 10 5 L 0 10 z");
+
             //marker for input type graph
             svg.append("svg:defs")
                 .append("svg:marker")
                 .attr("id", "input-arrow")
                 .attr("viewBox", "0 0 10 10")
-                .attr("refX", -15)
+                .attr("refX", -7)
                 .attr("refY", 5)
                 .attr("markerUnits", "strokeWidth")
                 .attr("markerWidth", 6)
@@ -217,8 +222,14 @@
                     //.style('stroke', function(d) { return d.target.level; })
                     .style('stroke', 'green')
                     .attr('d', diagonal);
-                    link.attr("marker-start", "url(#input-arrow)"); //if input
-
+                    link.attr("marker-start", function (d) {
+                        if(d.target.arrowDirections==="Input")
+                        return "url(#input-arrow)";
+                    }); //if input
+                link.attr("marker-end", function (d) {
+                    if(d.target.arrowDirections==="Output")
+                        return "url(#output-arrow)";
+                }); //if outPut
 
             }
 
