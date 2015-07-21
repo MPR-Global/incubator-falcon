@@ -125,6 +125,39 @@
 
   </div>
 </nav>
+<div class="col-sm-24">
+<div class="row searchBoxContainer">
+    <div class=" col-sm-offset-4 col-sm-16">
+        <!--<i class="glyphicon glyphicon-refresh search-loading-icon" ng-show="loading"></i>-->
+        <img src="css/img/ajax-loader.gif" class="glyphicon search-loading-icon" ng-show="loading"/>
+        <tags-input ng-model="tags" min-length="1" add-on-space="true" on-tag-added="displayResults()"
+                    on-tag-removed="displayResults()"></tags-input>
+        <!--ng-class="tags.length > 0 ? 'question-icon' : 'remove-icon'"-->
+        <i id="nsPopover" class="glyphicon glyphicon-question-sign question-icon"
+           ns-popover
+           ns-popover-template="menu"
+           ns-popover-trigger="click"
+           ns-popover-theme="ns-popover-tooltip-theme"
+           ns-popover-timeout="5"
+           ns-popover-placement="bottom|right"></i>
+        <i class="glyphicon glyphicon-search search-icon" ng-hide="loading"></i>
+        <script type="text/ng-template" id="menu">
+            <div class="triangle"></div>
+            <div class="ns-popover-tooltip">
+                <h5>Hey there! Want some search tips?</h5>
+                The <strong>first word</strong> you type will be taken as the <strong>Name</strong> of the entity.
+                <br/>
+                You can search <strong>*</strong> for getting all the entities.
+                <br/>
+                The <strong>second and following</strong> words will be taken as <strong> Tags</strong>.
+                <br/>
+                For filtering by type, write <strong>type=feed|process|mirror</strong>
+            </div>
+        </script>
+        <i class="glyphicon glyphicon-remove remove-icon" ng-if="tags.length > 0" ng-click="clearTags()"></i>
+    </div>
+</div>
+</div>
 <!--
 <nav class="col-sm-24 navbar navbar-default header3" role="navigation" ng-show="userLogged() && showMenu">
     <div class="col-sm-offset-4 col-sm-18">

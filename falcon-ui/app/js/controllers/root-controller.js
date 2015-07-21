@@ -135,6 +135,12 @@
         Falcon.logResponse('cancel', cancelInfo, type, false);
       };
 
+      $scope.displayResults = function () {
+        $state.go("main");
+        $scope.refreshList($scope.tags);
+      };
+
+
     }]);
 
 }());
